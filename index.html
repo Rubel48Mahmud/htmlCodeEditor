@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style type="text/css">
+.main{margin:0 auto;
+width:800px}
+.code{width:790px;
+padding:5px;
+font-weight:bold;
+outline:none;
+border:2px solid red;
+font-size:25px
+}
+.htmlC{
+padding:5px;
+height:200px}
+.cssC{
+height:200px}
+.jsC{
+height:150px}
+.result{
+width:800px;
+height:400px;
+border:2px solid green;
+}
+span{font-weight:bold;
+color:orange;
+font-size:40px}
+
+</style>
+
+</head>
+<body>
+<div class="main">
+  <textarea class="htmlC code" id="htmlCode" placeholder="HTML Code" 
+            oninput="showPreview()"></textarea>
+  <textarea class="cssC code" id="cssCode" placeholder="CSS Code" 
+            oninput="showPreview()"></textarea>
+            
+  <textarea class="jsC code" id="jsCode" placeholder="JavaScript Code" 
+            oninput="showPreview()"></textarea>				
+
+<p></p>
+            <span>Live Preview</span>
+  <iframe class="result" id="preview-window"></iframe>
+  </div>
+</body>
+
+
+<script type="text/javascript">
+
+function showPreview(){
+  var htmlCode = document.getElementById("htmlCode").value;
+  var cssCode = "<style>"+document.getElementById("cssCode").value+"</style>";
+  var jsCode = "<scri"+"pt>"+document.getElementById("jsCode").value+"</scri"+"pt>";
+  var frame = document.getElementById("preview-window").contentWindow.document;
+  frame.open();
+  frame.write(htmlCode+cssCode+jsCode);
+  frame.close();
+}
+
+</script>
+</html>
